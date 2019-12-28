@@ -56,6 +56,10 @@ class App extends Component {
   }
 
   addDrink = (amount, strength) => {
+    if (!amount) {
+      this.setState({adding: false})
+      return
+    }
     const date = new Date()
     const occasions = this.state.occasions
     let index = this.getCurrentOccasion(occasions)
@@ -73,8 +77,11 @@ class App extends Component {
       currentTime: this.getCurrentTime(occasions),
       currentDrinks: this.getCurrentDrinks(occasions),
       perMille: createGraph(this.getCurrentDrinks(occasions)).perMille,
+      end: createGraph(this.getCurrentDrinks(occasions)).end,
+      start: createGraph(this.getCurrentDrinks(occasions)).start,
       pos: this.getCurrentTime(occasions),
     })
+    console.log(occasions[index].drinks)
     localStorage.setItem('occasions', JSON.stringify(occasions))
   }
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
+const xScale = 150;
+const yScale = 100;
 
 class Graph extends Component {
-    start = 0
-    end = 100000
-
     componentDidMount() {
         const canvas = this.refs.canvas;
         this.ctx = canvas.getContext("2d")
@@ -13,28 +12,30 @@ class Graph extends Component {
     }
 
     drawGraph = () => {
+        if (!this.ctx) {
+          return
+        }
         console.log('draw', this.props.perMille)
-        const pos = this.props.pos - 200
+        const pos = this.props.pos *2 - 200
         this.ctx.clearRect(0, 0, 400, 1000);
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
         this.ctx.strokeStyle  = "#ffffff";
         this.ctx.moveTo(0, 650);
-        console.log("hej")
-        let i = 0
-        for (; i < this.props.perMille.length; i++) {
+        console.log("hej") 
+        for (let i = 0; i < this.props.perMille.length; i++) {
             if (this.props.currentTime === i) {
                 this.currentPromil = this.props.perMille[i];
                 this.ctx.stroke();
                 this.ctx.strokeStyle  = "gray";
                 this.ctx.lineWidth = 1;
                 this.ctx.beginPath();
-                this.ctx.lineTo(i - pos+5-1, Math.round(650-this.props.perMille[i-1]*1000));
+                this.ctx.lineTo((i*2) - pos+5-1, Math.round(650-this.props.perMille[i-1]*1000));
             } 
             if (this.props.perMille[i]) {
-                this.ctx.lineTo(i - pos+5-1, Math.round(650-this.props.perMille[i]*1000));
+                this.ctx.lineTo((i*2) - pos+5-1, Math.round(650-this.props.perMille[i]*1000));
             } else {
-                this.ctx.lineTo(i - pos+5-1, 650);
+                this.ctx.lineTo((i*2) - pos+5-1, 650);
             }
         }
         this.ctx.stroke();
@@ -62,13 +63,13 @@ class Graph extends Component {
             if ((Math.round(pos + i))%60 === 0) {
                 this.ctx.beginPath(); 
                 this.ctx.strokeStyle  = "gray";
-                this.ctx.moveTo(5+i, 653);
-                this.ctx.lineTo(5+i, 647);
+                this.ctx.moveTo(5+(i*2), 653);
+                this.ctx.lineTo(5+(i*2), 647);
                 this.ctx.stroke();
                 this.ctx.fillStyle = "gray";
                 this.ctx.textAlign = "center";
                 this.ctx.font = "15px Arial";
-                this.ctx.fillText(`${((Math.round(pos+i))/60)%24}:00`, 5+i, 670);
+                this.ctx.fillText(`${((Math.round(pos+i))/60)%24}:00`, 5+(i*2), 670);
             }
         }
        

@@ -22,10 +22,11 @@ function addDrink(perMille, i) {
         const curentVal = (nextPer[j+i-1]) ? nextPer[j+i-1] : 0
         nextPer[j+i-1] = perMille/denom * (t-j) + curentVal
     }
-    
 }
 
 function createGraph(drinks) {
+    console.log("Create Graph...");
+    
     nextPer.splice(0,nextPer.length)
     const perMille = [] 
     let index = 0;
@@ -36,7 +37,7 @@ function createGraph(drinks) {
     let currentVal = 0
     let start = 0
     let i = start;
-    while (currentDrink || currentVal > 0 || i > 34 * 60) {
+    while ((currentDrink || currentVal > 0) && i < 48 * 60) {
         while (currentDrink?.time === i) {
             addDrink(convertToPermille(convertToGramsAlcohol(currentDrink.amount,currentDrink.strength)),i)
             //currentVal += convertToPermille(convertToGramsAlcohol(currentDrink.amount,currentDrink.strength));
@@ -51,6 +52,7 @@ function createGraph(drinks) {
         perMille.push(currentVal)
         i++
     }
+    console.log("Graph Done");
     return {end:i + 400, start:drinks[0].time - 200 , perMille:perMille};
 }
 

@@ -5,6 +5,9 @@ import AddDrink from './paths/AddDrink';
 import FormSettings from './paths/FormSettings';
 import History from './paths/History';
 import createGraph from './GraphCreater';
+import Promille from './icons/Promille';
+import Historik from './icons/Historik';
+import Installningar from './icons/Installningar';
 
 class App extends Component {
   state = { 
@@ -48,7 +51,7 @@ class App extends Component {
       localStorage.setItem('userLength', '190')
     }
     if (!localStorage.getItem('userGender')) {
-      localStorage.setItem('userGender', 'man')
+      localStorage.setItem('userGender', 'Man')
     }
     if (!localStorage.getItem('occasions')) {
       localStorage.setItem('occasions', JSON.stringify([]))
@@ -171,9 +174,15 @@ class App extends Component {
           {(this.state.adding) ? <AddDrink handleAdd={this.addDrink}></AddDrink>: null}
         </div>
         <div className="nav">
-          <button onClick={() => this.handlePage("Graph")}>Graph</button>
-          <button onClick={() => this.handlePage("History")}>History</button>
-          <button onClick={() => this.handlePage("Settings")}>Settings</button>
+          <button onClick={() => this.handlePage("Graph")} className={(this.state.page === "Graph") ? "open" : "close"}>
+            <Promille/>  
+          Promille</button>
+          <button onClick={() => this.handlePage("History")} className={(this.state.page === "History") ? "open" : "close"}>
+            <Historik/>
+          Historik</button>
+          <button onClick={() => this.handlePage("Settings")} className={(this.state.page === "Settings") ? "open" : "close"}>
+            <Installningar/>
+          Settings</button>
         </div>
       </div>
      );

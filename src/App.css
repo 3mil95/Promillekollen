@@ -29,6 +29,18 @@
   padding: 5%;
 }
 
+.open {
+  stroke: white;
+  fill: white;
+  color: white;
+}
+
+.close {
+  stroke: #666;
+  fill: #666;
+  color: #666;
+}
+
 .settings {
   display: flex;
   flex-direction: column;
@@ -59,6 +71,11 @@
   grid-template-rows: calc(100vh - 60px) 60px;
 }
 
+.history {
+  overflow: auto;
+  color: #fff;
+  height: calc(100vh - 150px);
+}
 
 .page {
   height: 100%;
@@ -81,7 +98,6 @@
   width: 60px;
   background: transparent;
   font-weight: 600;
-  color: #fff;
 }
 
 body {
@@ -171,6 +187,10 @@ h1 {
 
 button {
   border: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 

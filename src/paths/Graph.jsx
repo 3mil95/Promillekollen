@@ -36,10 +36,10 @@ class Graph extends Component {
                 this.ctx.strokeStyle  = "gray";
                 this.ctx.lineWidth = 1;
                 this.ctx.beginPath();
-                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i-1]*1000));
+                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i-1]*500));
             } 
             if (this.props.perMille[i]) {
-                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i]*1000));
+                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i]*500));
             } else {
                 this.ctx.lineTo((i) - pos+5-1, 650);
             }
@@ -58,18 +58,18 @@ class Graph extends Component {
         this.ctx.lineTo(25, 650);
         this.ctx.lineTo(25, 0);
         this.ctx.stroke();
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 12; i++) {
             this.ctx.beginPath(); 
             this.ctx.strokeStyle  = "#333333";
-            this.ctx.moveTo(23, 50 + i *100);
-            this.ctx.lineTo(400, 50 +i*100);
+            this.ctx.moveTo(23, 50 + i *50);
+            this.ctx.lineTo(400, 50 +i*50);
             this.ctx.stroke();
             this.ctx.stroke();
             this.ctx.fillStyle = "gray";
             this.ctx.textAlign = "end";
             this.ctx.textBaseline = "middle";
             this.ctx.font = "15px Arial";
-            this.ctx.fillText(`0,${6-i}`, 20, 50 +i*100);
+            this.ctx.fillText(`${Math.floor((12-i)/10)},${(12-i)%10}`, 21, 50 +i*50);
         }
         for (let i = 0; i < 375; i++) {
             if ((Math.round(pos + i))%60 === 0) {
@@ -143,7 +143,7 @@ class Graph extends Component {
                 onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onMouseMove={this.handleMouseMove} onMouseLeave={this.handleMouseUp} 
                 onTouchStart={this.handleTouchStart} onTouchEnd={this.handleMouseUp} onTouchMove={this.handleTouchMove}></canvas>
                 <div className="graph-nav">
-                  <button onClick={this.props.handleAdd}>+</button>
+                  <button className="add-button" onClick={this.props.handleAdd}>+</button>
                   <h3>{Math.round(this.currentPromil * 1000) / 1000}</h3>
                 </div>
             </div>

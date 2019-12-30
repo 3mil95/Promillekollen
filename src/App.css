@@ -12,14 +12,53 @@
   background: #000;
 }
 
+.modal-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  height: 100vh;
+  max-width: 400px;
+  height: calc(100vh - 10px);
+  padding: 5px;
+  margin: auto;
+}
+
+.forms {
+  transform-origin: center;
+  padding: 5%;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 60px);
+  padding: 5px;
+}
+
+.close-button {
+  background: #993344;
+  font-weight: 600;
+  width: fit-content;
+  padding: 5px;
+  display: block;
+}
+
+.confirm-button {
+  font-weight: 900;
+  background: #4CAF50;
+  padding: 5px;
+}
+
 .App {
+  height: 100vh;
   background: #111;
   text-align: center;
-  height: calc(100% - 80px);
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 60px;
+  grid-template-rows: calc(100vh - 60px) 60px;
 }
+
 
 .page {
   height: 100%;
@@ -29,18 +68,26 @@
 }
 
 .nav {
-  height: 100%;
-  background: #333;
+  height: 60px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  background: #111;
+  border-top: 2px #444 dotted;
 }
 
 .nav button {
   height: 60px;
   width: 60px;
+  background: transparent;
+  font-weight: 600;
+  color: #fff;
 }
 
 body {
   background: #000;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 label {
@@ -48,26 +95,82 @@ label {
 }
 
 canvas {
-  height: 500px;
+  width: 90%;
+  max-width: 400px;
+  max-height: calc(100vh - 105px);
 }
 
 .graph-nav {
-  width: 100%;
-  max-width: 200px;
+  background: #fff;
+  width: 90%;
+  max-width: 400px;
   display: flex;
   justify-content: space-around;
   margin: auto;
 }
 
-.graph-nav button {
+.add-button {
   width: 50%;
   font-weight: 900;
+  background: #4CAF50;
 }
 
 h3 {
-  color: #fff;
+  color: #000;
   width: 50%;
 }
 
+h1 {
+  color: #fff;
+  border-bottom: 2px #444 solid;
+  width: 100%; 
+  max-width: 400px;
+  margin: auto;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  max-width: 400px;
+  margin: auto;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+button {
+  border: none;
+}
 
 

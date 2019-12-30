@@ -104,6 +104,11 @@ class App extends Component {
   }
 
   handlePage = (page) => {
+    if (page === "Graph" && page === this.state.page) {
+      this.setState({
+        pos: this.getCurrentTime(this.state.occasions)
+      })
+    }
     this.setState({
       page: page
     })

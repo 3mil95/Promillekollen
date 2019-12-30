@@ -20,10 +20,13 @@ class AddDrink extends Component {
         this.handleType(0)
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+    handleSubmit = () => {
         this.props.handleAdd(this.state.amount, this.state.strength);
     } 
+
+    onSubmit = (e) => {
+        e.preventDefault();
+    }
 
     handleClose = () => {
         this.props.handleAdd(null, null);
@@ -49,17 +52,25 @@ class AddDrink extends Component {
         const index = this.state.index
         return ( 
             <div className='modal'>
-                <button onClick={this.handleClose}>x</button>
-                <div>
-                    {(index !== 0) ? <button onClick={() => this.handleType(-1)}>-</button> : null}
-                    <label>{this.types[index].name}</label>
-                    {(index !== this.types.length-1) ? <button onClick={() => this.handleType(1)}>+</button> : null}
+                <div className="modal-page">
+                    <button className="close-button" onClick={this.handleClose}>Avbryt</button>
+                    <form onChange={this.handleChange} onSubmit={this.onSubmit} className='forms'>
+                        <div>
+                            {(index !== 0) ? <button onClick={() => this.handleType(-1)}>-</button> : null}
+                            <label>{this.types[index].name}</label>
+                            {(index !== this.types.length-1) ? <button onClick={() => this.handleType(1)}>+</button> : null}
+                        </div>
+                        <label>{`${this.state.amount} cl`}</label><br/>
+                        <div class="slidecontainer">
+                            <input min="1" max="100" value={this.state.amount} className="slider" type="range" name="amount"/>
+                        </div><br/>
+                        <label>{`${this.state.strength}%`}</label><br/>
+                        <div class="slidecontainer">
+                            <input min="1" max="100" value={this.state.strength} className="slider" step='0.1' type="range" name="strength"/><br/>
+                        </div>
+                    </form>
+                    <button onClick={this.handleSubmit} className="confirm-button">Klar</button>
                 </div>
-                <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                    <label>{`${this.state.amount} cl`}</label><br/><input min="1" max="100" value={this.state.amount} type="range" name="amount"/><br/>
-                    <label>{`${this.state.strength}%`}</label><br/><input min="1" max="100" value={this.state.strength} step='0.1' type="range" name="strength"/><br/>
-                    <input type="submit" value="Klar"/>
-                </form>
             </div>
         );
     }

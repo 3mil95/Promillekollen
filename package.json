@@ -2,7 +2,7 @@
   "name": "promillekollen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://3mil95.github.io/Promillekollen",
+  "homepage": "http://3mil95.github.io/Promillekollen/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
 class FormSettings extends Component {
-    state = {  }
+    state = { 
+        gender: 1,
+        weight: 40,
+        length: 55
+     }
 
     map = {
-        "man": 1,
-        "woman": 2,
-        1:"man",
-        2:"woman"
+        "Man": 1,
+        "Woman": 2,
+        1:"Man",
+        2:"Woman"
     }
 
     componentDidMount() {
@@ -19,14 +23,14 @@ class FormSettings extends Component {
             weight:weight,
             length:length
         })
+        
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+    componentWillUnmount = () => {
         localStorage.setItem('userWeight', this.state.weight)
         localStorage.setItem('userLength', this.state.length)
         localStorage.setItem('userGender', this.map[this.state.gender])
-    } 
+    }
     
     handleChange = (e) => {
         if (e.target.name === "gender")
@@ -39,12 +43,22 @@ class FormSettings extends Component {
 
     render() { 
         return ( 
-        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-            <label>{`${this.map[this.state.gender]}`}</label><br/><input min="1" max="2" value={this.state.gender} type="range" name="gender"/><br/>
-            <label>{`${this.state.weight} kg`}</label><br/><input min="40" max="220" value={this.state.amount} type="range" name="weight"/><br/>
-            <label>{`${this.state.length} cl`}</label><br/><input min="55" max="220" value={this.state.strength} type="range" name="length"/><br/>
-            <input type="submit" value="Klar"/>
-        </form>
+            <div className="settings">
+                <form onChange={this.handleChange} className="forms">
+                    <label>{`${this.map[this.state.gender]}`}</label><br/>
+                    <div class="slidecontainer">
+                    <input min="1" max="2" value={this.state.gender} className="slider"  type="range" name="gender"/>
+                    </div><br/>
+                    <label>{`${this.state.weight} kg`}</label><br/>
+                    <div class="slidecontainer">
+                    <input min="40" max="220" value={this.state.weight} className="slider"  type="range" name="weight"/>
+                    </div><br/>
+                    <label>{`${this.state.length} cl`}</label><br/>
+                    <div class="slidecontainer">
+                    <input min='55' max="220" value={this.state.length} className="slider" type="range" name="length"/>
+                    </div><br/>
+                </form>
+            </div>
         );
     }
 }

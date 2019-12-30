@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Promillekollen/precache-manifest.1b4a95019b5f30e69dc08d0ef3041b27.js"
+  "/Promillekollen/precache-manifest.8242872cd3d170e9f742491775ca0b0a.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -12,27 +12,7 @@ class History extends Component {
             <div className="page">
                 <h1>History</h1>
                 <div className="history">
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
-                <p>2019-1-3</p>
+                <p>TODO</p>
                 <button onClick={this.clear}>Clear</button>
                 </div>
             </div>

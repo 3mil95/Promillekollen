@@ -12,6 +12,24 @@
   background: #000;
 }
 
+.type-selecter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.type-selecter label {
+  vertical-align: top;
+}
+
+.type-selecter button {
+  background: #999;
+}
+ 
+.type-selecter button, .type-selecter p {
+  width: 30px;
+}
+
 .modal-page {
   display: flex;
   flex-direction: column;
@@ -40,6 +58,33 @@
   fill: #666;
   color: #666;
 }
+
+.drinks {
+  overflow: auto;
+  height: 70px;
+  width: 90vw;
+  max-width: calc(400px - 10%);
+  margin: 0 5%;
+  margin-bottom: 5px;
+}
+
+.drink-scroll {
+  display: inline-flex;
+  flex: 1;
+}
+
+.drink {
+  white-space: nowrap;
+  float: left;
+  width: 40px;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
 
 .settings {
   display: flex;
@@ -80,6 +125,7 @@
 .page {
   height: 100%;
   width: 100%;
+  max-width: 400px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -87,7 +133,6 @@
 .nav {
   height: 60px;
   width: 100%;
-  max-width: 400px;
   margin: auto;
   background: #111;
   border-top: 2px #444 dotted;
@@ -104,6 +149,9 @@ body {
   background: #000;
   height: 100vh;
   overflow: hidden;
+  width: 100%; 
+  max-width: 400px;
+  margin: auto;
 }
 
 label {
@@ -113,7 +161,7 @@ label {
 canvas {
   width: 90%;
   max-width: 400px;
-  max-height: calc(100vh - 105px);
+  max-height: calc(100vh - 180px);
 }
 
 .graph-nav {
@@ -156,7 +204,7 @@ h1 {
   appearance: none;
   width: 100%; /* Full-width */
   height: 25px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
+  background: #999; /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */

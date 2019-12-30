@@ -17,7 +17,9 @@ class App extends Component {
     currentTime: 0,
     currentDrinks: [],
     perMille: [],
-    pos: 0
+    pos: 0,
+    index: null,
+    drink: null
   }
 
   componentDidMount() {
@@ -58,29 +60,7 @@ class App extends Component {
     }
   }
 
-  addDrink = (amount, strength) => {
-    if (!amount) {
-      this.setState({adding: false})
-      return
-    }
-    const date = new Date()
-    const occasions = this.state.occasions
-    let index = this.getCurrentOccasion(occasions)
-    if (index === null) {
-      const newOccasions = {year: date.getFullYear(),month: date.getMonth(), date:date.getDate(),drinks:[]}
-      occasions.push(newOccasions)
-      index = occasions.length -1
-    }
-    console.log(occasions);
-    
-    const time = this.getCurrentTime(occasions)
-    console.log(time);
-    
-    if (!time) {
-      return
-    }    
-    const newDrink = {time:time, amount:parseInt(amount), strength:parseInt(strength)}
-    occasions[index].drinks.push(newDrink)
+  saveChange = (occasions) => {
     this.setState({
       adding: false,
       occasions:occasions,
@@ -94,9 +74,51 @@ class App extends Component {
     localStorage.setItem('occasions', JSON.stringify(occasions))
   }
 
-  handleAdd = (e) => {
+  removeDrink = (i) => {
+    const occasions = this.state.occasions
+    let index = this.getCurrentOccasion(occasions)
+    occasions[index].drinks.splice(i,1)
+    this.saveChange(occasions)
+  }
+
+  editDrink = (i, amount, strength, type) => {
+    const occasions = this.state.occasions
+    let index = this.getCurrentOccasion(occasions)
+    let drink = occasions[index].drinks[i]
+    drink.amount = parseInt(amount)
+    drink.strength = parseInt(strength)
+    drink.type = type
+    occasions[index].drinks[i] = drink
+    this.saveChange(occasions)
+  }
+
+  addDrink = (amount, strength, type) => {
+    if (!amount) {
+      this.setState({adding: false})
+      return
+    }
+    const date = new Date()
+    const occasions = this.state.occasions
+    let index = this.getCurrentOccasion(occasions)
+    if (index === null) {
+      const newOccasions = {year: date.getFullYear(),month: date.getMonth(), date:date.getDate(),drinks:[]}
+      occasions.push(newOccasions)
+      index = occasions.length -1
+    }
+    const time = this.getCurrentTime(occasions)
+    const nweDrink = {time:time, amount:amount, strength:strength, type:type}
+    occasions[index].drinks.push(nweDrink)
+    if (!time) {
+      return
+    }    
+    this.saveChange(occasions)
+  }
+
+  handleAdd = (index, drink) => {
     this.setState({
-      adding: true
+      adding: true,
+      index: index,
+      drink: drink
     })
   }
 
@@ -163,15 +185,17 @@ class App extends Component {
     return h*60+min + this.getAddDate(occasions)
   }
 
-  render() {
+  render() {    
+    console.log("A", this.state.currentDrinks);
+    
     return ( 
       <div className="App">
         <div className="page">
           {(this.state.page === "Graph") ? <Graph currentTime={this.state.currentTime} pos={this.state.pos} end={this.state.end} start={this.state.start} 
-          setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd}/> : null }
+          setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/> : null }
           {(this.state.page === "History") ? <History></History> : null }
           {(this.state.page === "Settings") ? <FormSettings></FormSettings> : null }
-          {(this.state.adding) ? <AddDrink handleAdd={this.addDrink}></AddDrink>: null}
+          {(this.state.adding) ? <AddDrink handleAdd={this.addDrink} handleEdit={this.editDrink} handleRemove={this.removeDrink} drink={this.state.drink} index={this.state.index}></AddDrink>: null}
         </div>
         <div className="nav">
           <button onClick={() => this.handlePage("Graph")} className={(this.state.page === "Graph") ? "open" : "close"}>

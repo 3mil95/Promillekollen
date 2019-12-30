@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Drinks from '../components/Drinks';
 
 //const xScale = 150;
 //const yScale = 100;
@@ -7,23 +8,15 @@ class Graph extends Component {
     componentDidMount() {
         const canvas = this.refs.canvas;
         this.ctx = canvas.getContext("2d")
-        if (this.props.perMille.length > 0)
-            this.drawGraph()
+        this.createAxes()
     }
 
     componentDidUpdate() {
-      if (this.props.perMille.length > 0)
-            this.drawGraph()
+      this.createAxes()
     }
 
     drawGraph = () => {
-        if (!this.ctx) {
-          return
-        }
         console.log('draw', this.props.perMille)
-        this.ctx.clearRect(0, 0, 400, 1000);
-        this.ctx.fillStyle = "#222222"
-        this.ctx.fillRect(25, 0, 375, 650);
         const pos = this.props.pos - 200
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
@@ -45,13 +38,28 @@ class Graph extends Component {
             }
         }
         this.ctx.stroke();
-        this.createAxes()
     }
 
     createAxes = () => {
+      if (!this.ctx) {
+        return
+      }
         const pos = this.props.pos -200
         this.ctx.strokeStyle  = "gray";
         this.ctx.lineWidth = 1;
+        this.ctx.clearRect(0, 0, 400, 1000);
+        this.ctx.fillStyle = "#222222"
+        this.ctx.fillRect(25, 0, 375, 650);
+        for (let i = 0; i < 12; i++) {
+          this.ctx.beginPath(); 
+          this.ctx.strokeStyle  = "#333333";
+          this.ctx.moveTo(23, 50 + i *50);
+          this.ctx.lineTo(400, 50 +i*50);
+          this.ctx.stroke();
+        }
+        if (this.props.perMille.length > 0)
+          this.drawGraph()
+
         this.ctx.clearRect(0, 0, 25, 700);
         this.ctx.beginPath(); 
         this.ctx.moveTo(400, 650);
@@ -59,32 +67,25 @@ class Graph extends Component {
         this.ctx.lineTo(25, 0);
         this.ctx.stroke();
         for (let i = 0; i < 12; i++) {
-            this.ctx.beginPath(); 
-            this.ctx.strokeStyle  = "#333333";
-            this.ctx.moveTo(23, 50 + i *50);
-            this.ctx.lineTo(400, 50 +i*50);
-            this.ctx.stroke();
-            this.ctx.stroke();
-            this.ctx.fillStyle = "gray";
-            this.ctx.textAlign = "end";
-            this.ctx.textBaseline = "middle";
-            this.ctx.font = "15px Arial";
-            this.ctx.fillText(`${Math.floor((12-i)/10)},${(12-i)%10}`, 21, 50 +i*50);
-        }
+          this.ctx.fillStyle = "gray";
+          this.ctx.textAlign = "end";
+          this.ctx.textBaseline = "middle";
+          this.ctx.font = "15px Arial";
+          this.ctx.fillText(`${Math.floor((12-i)/10)},${(12-i)%10}`, 21, 50 +i*50);
+      }
         for (let i = 0; i < 375; i++) {
-            if ((Math.round(pos + i))%60 === 0) {
-                this.ctx.beginPath(); 
-                this.ctx.strokeStyle  = "gray";
-                this.ctx.moveTo(25+i, 653);
-                this.ctx.lineTo(25+i, 647);
-                this.ctx.stroke();
-                this.ctx.fillStyle = "gray";
-                this.ctx.textAlign = "center";
-                this.ctx.font = "15px Arial";
-                this.ctx.fillText(`${((Math.round(pos+i))/60)%24}:00`, 25+i, 670);
-            }
-        }
-       
+          if ((Math.round(pos + i))%60 === 0) {
+              this.ctx.beginPath(); 
+              this.ctx.strokeStyle  = "gray";
+              this.ctx.moveTo(25+i, 653);
+              this.ctx.lineTo(25+i, 647);
+              this.ctx.stroke();
+              this.ctx.fillStyle = "gray";
+              this.ctx.textAlign = "center";
+              this.ctx.font = "15px Arial";
+              this.ctx.fillText(`${((Math.round(pos+i))/60)%24}:00`, 25+i, 670);
+          }
+      }
     }
 
     mouseClickedY = null;
@@ -135,15 +136,15 @@ class Graph extends Component {
     }
 
     render() { 
-        if (this.props.perMille.length > 0)
-            this.drawGraph()
+        this.createAxes()
         return ( 
             <div>
                 <canvas height='685px' width='400px' ref="canvas"
                 onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onMouseMove={this.handleMouseMove} onMouseLeave={this.handleMouseUp} 
                 onTouchStart={this.handleTouchStart} onTouchEnd={this.handleMouseUp} onTouchMove={this.handleTouchMove}></canvas>
+                <Drinks drinks={this.props.drinks} handleEdit={(index,dtink) => this.props.handleAdd(index,dtink)}></Drinks>
                 <div className="graph-nav">
-                  <button className="add-button" onClick={this.props.handleAdd}>+</button>
+                  <button className="add-button" onClick={() => this.props.handleAdd(null,null)}>+</button>
                   <h3>{Math.round(this.currentPromil * 1000) / 1000}</h3>
                 </div>
             </div>

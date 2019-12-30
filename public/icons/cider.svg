@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 40 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-348,-52.3136)">
+        <g id="Artboard9" transform="matrix(0.5,0,0,1.02564,348,1.03157)">
+            <rect x="0" y="50" width="80" height="78" style="fill:none;"/>
+            <g transform="matrix(1.90909,0,0,0.975,-672.091,-7.32783)">
+                <ellipse cx="373" cy="127.032" rx="11" ry="1.968" style="fill:none;stroke:rgb(30,55,34);stroke-width:1.53px;"/>
+            </g>
+            <g transform="matrix(2.13819,0,0,0.975,-784.274,7.30953)">
+                <ellipse cx="385.5" cy="57" rx="3.5" ry="1" style="fill:none;stroke:rgb(30,55,34);stroke-width:1.45px;"/>
+            </g>
+            <g transform="matrix(2,0,0,0.975,-737,-5.40874)">
+                <path d="M384.783,62.115C384.767,62.078 384.758,62.039 384.758,62C384.758,61.448 386.435,61 388.5,61C390.565,61 392.242,61.448 392.242,62L392.28,62L392.28,69.565C392.28,72.27 395.776,78.651 397.32,81.747C398.438,83.99 398.859,85.515 399,87.742L399,125.063C399,126.15 394.295,127.032 388.5,127.032C382.705,127.032 378,126.15 378,125.063L378.063,87.742C378.204,85.515 378.625,83.99 379.743,81.747C381.287,78.651 384.783,72.27 384.783,69.565L384.783,62.115Z" style="fill:none;stroke:rgb(0,144,27);stroke-width:1.5px;"/>
+            </g>
+            <g transform="matrix(2.13819,0,0,0.975,-784.274,-0.533737)">
+                <ellipse cx="385.5" cy="57" rx="3.5" ry="1" style="fill:none;stroke:rgb(0,144,27);stroke-width:1.45px;"/>
+            </g>
+        </g>
+    </g>
+</svg>

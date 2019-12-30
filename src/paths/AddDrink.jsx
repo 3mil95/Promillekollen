@@ -16,12 +16,44 @@ class AddDrink extends Component {
         {name:"Sprit", strength:40, amount: 4}
     ]
 
+    imgMap = {
+        'Öl':"icons/ol.svg",
+        "Vin":"icons/vin.svg",
+        "Drink":"icons/drink.svg",
+        "Cider":"icons/cider.svg",
+        "Sprit":"icons/sprit.svg"
+    }
+
+    typeToIndex = (findType) => {
+        let index = 0
+        this.types.forEach((type, i) => {
+            if (type.name === findType) {
+                index = i
+            }
+        })
+        return index
+    }
+
     componentDidMount() {
+        if (this.props.index !== null) {
+            console.log("edit")
+            this.setState({
+                index: this.typeToIndex(this.props.drink.type),
+                amount: this.props.drink.amount,
+                strength: this.props.drink.strength
+            })
+            console.log(this.state)
+            return
+        }
         this.handleType(0)
     }
 
     handleSubmit = () => {
-        this.props.handleAdd(this.state.amount, this.state.strength);
+        if (this.props.index !== null) {
+            this.props.handleEdit(this.props.index, this.state.amount, this.state.strength, this.types[this.state.index].name)
+            return
+        }
+        this.props.handleAdd(this.state.amount, this.state.strength, this.types[this.state.index].name);
     } 
 
     onSubmit = (e) => {
@@ -29,6 +61,10 @@ class AddDrink extends Component {
     }
 
     handleClose = () => {
+        if (this.props.index !== null) {
+            this.props.handleRemove(this.props.index)
+            return
+        }
         this.props.handleAdd(null, null);
     }
 
@@ -49,16 +85,20 @@ class AddDrink extends Component {
     }
 
     render() { 
+        
         const index = this.state.index
         return ( 
             <div className='modal'>
                 <div className="modal-page">
-                    <button className="close-button" onClick={this.handleClose}>Avbryt</button>
+                    <button className="close-button" onClick={this.handleClose}>{(this.props.index !== null) ? "Remove" : "Avbryt"}</button>
                     <form onChange={this.handleChange} onSubmit={this.onSubmit} className='forms'>
-                        <div>
-                            {(index !== 0) ? <button onClick={() => this.handleType(-1)}>-</button> : null}
-                            <label>{this.types[index].name}</label>
-                            {(index !== this.types.length-1) ? <button onClick={() => this.handleType(1)}>+</button> : null}
+                        <div className="type-selecter">
+                            {(index !== 0) ? <button onClick={() => this.handleType(-1)}>◀</button> : <p></p>}
+                            <div>
+                                <img src={this.imgMap[this.types[index].name]} height='100px' alt="hej"/>
+                                <label>{this.types[index].name}</label>
+                            </div>
+                            {(index !== this.types.length-1) ? <button onClick={() => this.handleType(1)}>▶</button> : <p></p>}
                         </div>
                         <label>{`${this.state.amount} cl`}</label><br/>
                         <div class="slidecontainer">

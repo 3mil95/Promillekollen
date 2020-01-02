@@ -193,7 +193,7 @@ class App extends Component {
         <div className="page">
           {(this.state.page === "Graph") ? <Graph currentTime={this.state.currentTime} pos={this.state.pos} end={this.state.end} start={this.state.start} 
           setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/> : null }
-          {(this.state.page === "History") ? <History></History> : null }
+          {(this.state.page === "History") ? <History occasions={this.state.occasions} ></History> : null }
           {(this.state.page === "Settings") ? <FormSettings></FormSettings> : null }
           {(this.state.adding) ? <AddDrink handleAdd={this.addDrink} handleEdit={this.editDrink} handleRemove={this.removeDrink} drink={this.state.drink} index={this.state.index}></AddDrink>: null}
         </div>

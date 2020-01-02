@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HistoryButton from '../components/HistoryButton';
 
 class History extends Component {
     state = {  }
@@ -12,8 +13,10 @@ class History extends Component {
             <div className="page">
                 <h1>History</h1>
                 <div className="history">
-                <p>TODO</p>
-                <button onClick={this.clear}>Clear</button>
+                {this.props.occasions.map((occasion, i) => (
+                    <HistoryButton key={i} occasion={occasion}/>
+                ))}
+                <button className="close-button" onClick={this.clear}>Clear</button>
                 </div>
             </div>
          );

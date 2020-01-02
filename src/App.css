@@ -122,12 +122,23 @@
   height: calc(100vh - 150px);
 }
 
+.history-button {
+  color: #999;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 10px 0;
+  background: transparent;
+  border-bottom: #333 solid 1px;
+}
+
 .page {
   height: 100%;
-  width: 100%;
+  width: 100%; 
   max-width: 400px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin: auto;
 }
 
 .nav {
@@ -136,6 +147,7 @@
   margin: auto;
   background: #111;
   border-top: 2px #444 dotted;
+  
 }
 
 .nav button {
@@ -143,15 +155,14 @@
   width: 60px;
   background: transparent;
   font-weight: 600;
+  transition: all 30ms ease-in;
 }
 
 body {
   background: #000;
   height: 100vh;
   overflow: hidden;
-  width: 100%; 
-  max-width: 400px;
-  margin: auto;
+  width: 100%;
 }
 
 label {
@@ -183,6 +194,8 @@ h3 {
   color: #000;
   width: 50%;
 }
+
+
 
 h1 {
   color: #fff;

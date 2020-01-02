@@ -22,7 +22,7 @@ class Drinks extends Component {
                     {this.props.drinks.map((drink, i) => (
                         <button key={i} className="drink" onClick={() => this.props.handleEdit(i, drink)}>
                             <img src={this.imgMap[drink.type]} height='50px' alt="hej"/>
-                            {Math.floor((drink.time/60)%24)}:{(drink.time%60)}
+                            {Math.floor((drink.time/60)%24)}:{(drink.time%60 < 10) ? `0${drink.time%60}` :  drink.time%60}
                         </button>
                     ))}
                 </div>

@@ -45,7 +45,7 @@ function createGraph(drinks) {
             currentDrink = drinks[index] 
         } 
         currentVal += (nextPer[i]) ? nextPer[i] : 0
-        currentVal -= 0.15/60;
+        currentVal -= 0.25/60;
         if (currentVal < 0) {
             currentVal = 0;
         }    

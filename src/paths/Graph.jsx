@@ -29,12 +29,12 @@ class Graph extends Component {
                 this.ctx.strokeStyle  = "gray";
                 this.ctx.lineWidth = 1;
                 this.ctx.beginPath();
-                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i-1]*500));
+                this.ctx.lineTo((i) - pos+25, Math.round(650-this.props.perMille[i-1]*500));
             } 
             if (this.props.perMille[i]) {
-                this.ctx.lineTo((i) - pos+5-1, Math.round(650-this.props.perMille[i]*500));
+                this.ctx.lineTo((i) - pos+25, Math.round(650-this.props.perMille[i]*500));
             } else {
-                this.ctx.lineTo((i) - pos+5-1, 650);
+                this.ctx.lineTo((i) - pos+25, 650);
             }
         }
         this.ctx.stroke();
@@ -53,13 +53,19 @@ class Graph extends Component {
         for (let i = 0; i < 12; i++) {
           this.ctx.beginPath(); 
           this.ctx.strokeStyle  = "#333333";
+          if (i === 6) {
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeStyle  = "red";
+          }
           this.ctx.moveTo(23, 50 + i *50);
           this.ctx.lineTo(400, 50 +i*50);
           this.ctx.stroke();
         }
         if (this.props.perMille.length > 0)
           this.drawGraph()
-
+        
+        this.ctx.strokeStyle  = "gray";
+        this.ctx.lineWidth = 1;
         this.ctx.clearRect(0, 0, 25, 700);
         this.ctx.beginPath(); 
         this.ctx.moveTo(400, 650);

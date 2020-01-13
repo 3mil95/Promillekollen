@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Promillekollen/static/css/main.f845db15.chunk.css",
+    "main.css": "/Promillekollen/static/css/main.49fe2063.chunk.css",
     "main.js": "/Promillekollen/static/js/main.4c2db108.chunk.js",
     "main.js.map": "/Promillekollen/static/js/main.4c2db108.chunk.js.map",
     "runtime-main.js": "/Promillekollen/static/js/runtime-main.8abb7469.js",
@@ -8,15 +8,15 @@
     "static/js/2.7edca8e5.chunk.js": "/Promillekollen/static/js/2.7edca8e5.chunk.js",
     "static/js/2.7edca8e5.chunk.js.map": "/Promillekollen/static/js/2.7edca8e5.chunk.js.map",
     "index.html": "/Promillekollen/index.html",
-    "precache-manifest.a2cc77c67319d63970734189d4be13b1.js": "/Promillekollen/precache-manifest.a2cc77c67319d63970734189d4be13b1.js",
+    "precache-manifest.b96bb7ae25ca11ee993b9a4668df286d.js": "/Promillekollen/precache-manifest.b96bb7ae25ca11ee993b9a4668df286d.js",
     "service-worker.js": "/Promillekollen/service-worker.js",
-    "static/css/main.f845db15.chunk.css.map": "/Promillekollen/static/css/main.f845db15.chunk.css.map",
+    "static/css/main.49fe2063.chunk.css.map": "/Promillekollen/static/css/main.49fe2063.chunk.css.map",
     "static/js/2.7edca8e5.chunk.js.LICENSE": "/Promillekollen/static/js/2.7edca8e5.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.8abb7469.js",
     "static/js/2.7edca8e5.chunk.js",
-    "static/css/main.f845db15.chunk.css",
+    "static/css/main.49fe2063.chunk.css",
     "static/js/main.4c2db108.chunk.js"
   ]
 }

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ed3ba4abab4b0dd7b03d6c98c9143532",
+    "revision": "f560f442b1bc62ec304fdaf6722384d8",
     "url": "/Promillekollen/index.html"
   },
   {
-    "revision": "7b170c083f85e9f98bbd",
-    "url": "/Promillekollen/static/css/main.49fe2063.chunk.css"
+    "revision": "323c0b2b188e4bb16e96",
+    "url": "/Promillekollen/static/css/main.f1e19103.chunk.css"
   },
   {
     "revision": "10b6e7112db0dca8bb0f",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Promillekollen/static/js/2.7edca8e5.chunk.js.LICENSE"
   },
   {
-    "revision": "7b170c083f85e9f98bbd",
-    "url": "/Promillekollen/static/js/main.0ebb7191.chunk.js"
+    "revision": "323c0b2b188e4bb16e96",
+    "url": "/Promillekollen/static/js/main.c9cec665.chunk.js"
   },
   {
     "revision": "5bf9e81b890dfef49c96",

@@ -17,6 +17,7 @@ class Graph extends Component {
 
     drawGraph = () => {
         console.log('draw', this.props.perMille)
+        this.currentPromil = 0.00;
         const pos = this.props.pos - 200
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
@@ -148,15 +149,18 @@ class Graph extends Component {
 
     render() { 
         this.createAxes()
+        console.log("dr", this.props.drinks)
         return ( 
             <div>
-                <canvas height='685px' width='400px' ref="canvas"
+              <div className={(this.props.drinks.length !== 0) ? "show" : "hidden"}>
+                <canvas height='685px' width='400px' ref="canvas" 
                 onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onMouseMove={this.handleMouseMove} onMouseLeave={this.handleMouseUp} 
                 onTouchStart={this.handleTouchStart} onTouchEnd={this.handleMouseUp} onTouchMove={this.handleTouchMove}></canvas>
                 <Drinks drinks={this.props.drinks} handleEdit={(index,dtink) => this.props.handleAdd(index,dtink)}></Drinks>
-                {(this.props.currentTime) ? <div className="graph-nav">
+              </div>
+                {(this.props.currentTime !== -1) ? <div className= {(this.props.drinks.length !== 0) ? "graph-nav" : "graph-add"}>
                   <button className="add-button" onClick={() => this.props.handleAdd(null,null)}>+</button>
-                  <h3>{Math.round(this.currentPromil * 1000) / 1000}</h3>
+                  {(this.props.drinks.length !== 0) ? <h3>{Math.round(this.currentPromil * 1000) / 1000}</h3> : null}
                 </div> : null}
             </div>
         );

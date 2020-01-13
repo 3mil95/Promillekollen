@@ -150,6 +150,14 @@
   
 }
 
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 .nav button {
   height: 60px;
   width: 60px;
@@ -182,6 +190,18 @@ canvas {
   display: flex;
   justify-content: space-around;
   margin: auto;
+}
+
+.graph-add {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  margin: 50% auto;
+}
+
+.graph-add .add-button {
+  font-size: 25px;
 }
 
 .add-button {

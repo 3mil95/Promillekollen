@@ -55,7 +55,7 @@ class History extends Component {
         return ( 
             <div className="page">
                 {(this.state.occasion) ?
-                <Graph currentTime={null} pos={this.state.pos} end={this.state.end} start={this.state.start} 
+                <Graph currentTime={-1} pos={this.state.pos} end={this.state.end} start={this.state.start} 
                 setPos={this.setPos} perMille={this.state.perMille}
                 handleAdd={this.handleAdd} drinks={this.state.occasion.drinks}/>
                 :

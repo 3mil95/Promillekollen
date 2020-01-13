@@ -75,7 +75,7 @@ class Slider extends Component {
 
     handleTouchStart = (e) => {
         var touch = e.touches[0]
-        if (this.mouseClickedY) {
+        if (this.mouseClickedY  || this.props.editable === false) {
           return
         }
         this.mouseClickedY = touch.pageX

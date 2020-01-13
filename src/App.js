@@ -78,6 +78,9 @@ class App extends Component {
     const occasions = this.state.occasions
     let index = this.getCurrentOccasion(occasions)
     occasions[index].drinks.splice(i,1)
+    if (occasions[index].drinks.length === 0) {
+      occasions.splice(index,1)
+    }
     this.saveChange(occasions)
   }
 
@@ -90,24 +93,24 @@ class App extends Component {
     drink.type = type
     drink.time = time
     occasions[index].drinks[i] = drink
+    occasions[index].drinks.sort((a,b) => a.time - b.time)
     this.saveChange(occasions)
   }
 
   addDrink = (amount, strength, type, time) => {
-    if (!amount) {
-      this.setState({adding: false})
-      return
-    }
-    const date = new Date()
     const occasions = this.state.occasions
     let index = this.getCurrentOccasion(occasions)
-    if (index === null) {
-      const newOccasions = {year: date.getFullYear(),month: date.getMonth(), date:date.getDate(),drinks:[]}
-      occasions.push(newOccasions)
-      index = occasions.length -1
+    if (!amount) {
+      this.setState({adding: false})
+      if (occasions[index].drinks.length === 0) {
+        occasions.splice(index,1)
+        this.saveChange(occasions)
+      }
+      return
     }
     const nweDrink = {time:time, amount:amount, strength:strength, type:type}
     occasions[index].drinks.push(nweDrink)
+    occasions[index].drinks.sort((a,b) => a.time - b.time)
     if (!time) {
       return
     }    
@@ -115,6 +118,14 @@ class App extends Component {
   }
 
   handleAdd = (index, drink) => {
+    const date = new Date()
+    const occasions = this.state.occasions
+    let i = this.getCurrentOccasion(occasions)
+    if (i === null) {
+      const newOccasions = {year: date.getFullYear(),month: date.getMonth(), date:date.getDate(),drinks:[]}
+      occasions.push(newOccasions)
+      this.saveChange(occasions)
+    }
     this.setState({
       adding: true,
       index: index,

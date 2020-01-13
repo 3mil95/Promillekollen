@@ -197,11 +197,11 @@ canvas {
   max-width: 400px;
   display: flex;
   justify-content: space-around;
-  margin: 50% auto;
+  margin: 40vh auto;
 }
 
 .graph-add .add-button {
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .add-button {

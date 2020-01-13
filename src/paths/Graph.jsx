@@ -137,7 +137,12 @@ class Graph extends Component {
       if (!this.mouseClickedY) {
         return
       }
-      const newPos = this.thePos + (this.mouseClickedY - touch.pageX)
+      let newPos = this.thePos + (this.mouseClickedY - touch.pageX)
+      if (newPos < this.props.start) {
+        newPos = this.props.start
+      } else if (newPos > this.props.end) {
+        newPos = this.props.end
+      }
       this.props.setPos(newPos)
     }
 
@@ -149,10 +154,10 @@ class Graph extends Component {
                 onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onMouseMove={this.handleMouseMove} onMouseLeave={this.handleMouseUp} 
                 onTouchStart={this.handleTouchStart} onTouchEnd={this.handleMouseUp} onTouchMove={this.handleTouchMove}></canvas>
                 <Drinks drinks={this.props.drinks} handleEdit={(index,dtink) => this.props.handleAdd(index,dtink)}></Drinks>
-                <div className="graph-nav">
+                {(this.props.currentTime) ? <div className="graph-nav">
                   <button className="add-button" onClick={() => this.props.handleAdd(null,null)}>+</button>
                   <h3>{Math.round(this.currentPromil * 1000) / 1000}</h3>
-                </div>
+                </div> : null}
             </div>
         );
     }

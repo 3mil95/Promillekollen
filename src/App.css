@@ -205,6 +205,16 @@ h1 {
   margin: auto;
 }
 
+.my-slider {
+  font-size: 30px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+}
+
 .slidecontainer {
   width: 100%; /* Width of the outside container */
   max-width: 400px;
@@ -221,7 +231,7 @@ h1 {
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
+  transition: all 1s linear;
 }
 
 /* Mouse-over effects */

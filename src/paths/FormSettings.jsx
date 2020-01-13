@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Slider from '../components/Slider';
 
 class FormSettings extends Component {
     state = { 
         gender: 1,
         weight: 40,
-        length: 55
+        length: 55,
      }
 
     map = {
@@ -39,13 +40,15 @@ class FormSettings extends Component {
             this.setState({weight: e.target.value});
         if (e.target.name === "length")
             this.setState({length: e.target.value});
+        if (e.target.name === "value")
+            this.setState({value: e.target.value});
     }
 
     render() { 
         return ( 
             <div className="settings">
                 <form onChange={this.handleChange} className="forms">
-                    <label>{`${this.map[this.state.gender]}`}</label><br/>
+                    {/*<label>{`${this.map[this.state.gender]}`}</label><br/>
                     <div class="slidecontainer">
                     <input min="1" max="2" value={this.state.gender} className="slider"  type="range" name="gender"/>
                     </div><br/>
@@ -56,7 +59,10 @@ class FormSettings extends Component {
                     <label>{`${this.state.length} cl`}</label><br/>
                     <div class="slidecontainer">
                     <input min='55' max="220" value={this.state.length} className="slider" type="range" name="length"/>
-                    </div><br/>
+                    </div><br/>*/}
+                    <Slider onChange={this.handleChange} value={this.state.gender} name="gender" min="1" max="2" map={this.map}></Slider>
+                    <Slider onChange={this.handleChange} value={this.state.weight} name="weight" min="40" max="220" unit=" kg"></Slider>
+                    <Slider onChange={this.handleChange} value={this.state.length} name="length" min='55' max="220" unit=" cm"></Slider>
                 </form>
             </div>
         );

@@ -81,18 +81,19 @@ class App extends Component {
     this.saveChange(occasions)
   }
 
-  editDrink = (i, amount, strength, type) => {
+  editDrink = (i, amount, strength, type, time) => {
     const occasions = this.state.occasions
     let index = this.getCurrentOccasion(occasions)
     let drink = occasions[index].drinks[i]
     drink.amount = parseInt(amount)
     drink.strength = parseInt(strength)
     drink.type = type
+    drink.time = time
     occasions[index].drinks[i] = drink
     this.saveChange(occasions)
   }
 
-  addDrink = (amount, strength, type) => {
+  addDrink = (amount, strength, type, time) => {
     if (!amount) {
       this.setState({adding: false})
       return
@@ -105,7 +106,6 @@ class App extends Component {
       occasions.push(newOccasions)
       index = occasions.length -1
     }
-    const time = this.getCurrentTime(occasions)
     const nweDrink = {time:time, amount:amount, strength:strength, type:type}
     occasions[index].drinks.push(nweDrink)
     if (!time) {
@@ -174,7 +174,6 @@ class App extends Component {
   }
 
   getCurrentTime = (occasions) => {
-    console.log("hej", this.getAddDate(occasions));
     if (this.getAddDate(occasions) === null) {
       return null
     }
@@ -185,9 +184,7 @@ class App extends Component {
     return h*60+min + this.getAddDate(occasions)
   }
 
-  render() {    
-    console.log("A", this.state.currentDrinks);
-    
+  render() {        
     return ( 
       <div className="App">
         <div className="page">
@@ -195,7 +192,7 @@ class App extends Component {
           setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/> : null }
           {(this.state.page === "History") ? <History occasions={this.state.occasions} ></History> : null }
           {(this.state.page === "Settings") ? <FormSettings></FormSettings> : null }
-          {(this.state.adding) ? <AddDrink handleAdd={this.addDrink} handleEdit={this.editDrink} handleRemove={this.removeDrink} drink={this.state.drink} index={this.state.index}></AddDrink>: null}
+          {(this.state.adding) ? <AddDrink currentTime={this.state.currentTime} handleAdd={this.addDrink} handleEdit={this.editDrink} handleRemove={this.removeDrink} drink={this.state.drink} index={this.state.index}></AddDrink>: null}
         </div>
         <div className="nav">
           <button onClick={() => this.handlePage("Graph")} className={(this.state.page === "Graph") ? "open" : "close"}>

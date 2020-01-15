@@ -26,7 +26,7 @@ function addDrink(perMille, i) {
 
 function createGraph(drinks) {
     console.log("Create Graph...");
-    
+    let max = 0;
     nextPer.splice(0,nextPer.length)
     const perMille = [] 
     let index = 0;
@@ -45,15 +45,18 @@ function createGraph(drinks) {
             currentDrink = drinks[index] 
         } 
         currentVal += (nextPer[i]) ? nextPer[i] : 0
-        currentVal -= 0.25/60;
+        currentVal -= 0.20/60;
         if (currentVal < 0) {
             currentVal = 0;
+        }
+        if (currentVal > max) {
+            max = currentVal;
         }    
         perMille.push(currentVal)
         i++
     }
     console.log("Graph Done");
-    return {end:i + 400, start:drinks[0].time - 200 , perMille:perMille};
+    return {end:i + 400, start:drinks[0].time - 200 , perMille:perMille, max:max};
 }
 
 

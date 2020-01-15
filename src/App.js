@@ -42,8 +42,7 @@ class App extends Component {
       this.setState({
         currentTime: this.getCurrentTime(this.state.occasions)
       })
-    }, 60 * 1000);
-    console.log(this.state.occasions)
+    }, 5 * 1000);
   }
 
   initLocalStorage = () => {
@@ -152,9 +151,7 @@ class App extends Component {
     })
   }
 
-  getAddDate = (occasions) => {
-    console.log("add", occasions);
-    
+  getAddDate = (occasions) => {    
     if (occasions.length === 0) {
       return null
     }
@@ -203,17 +200,11 @@ class App extends Component {
         <HashRouter>
         <div className="page">
           <Switch>
-          <Route exact path="/Settings" component={FormSettings} />
-          <Route exact path="/History" render={(props) => <History {...props} occasions={this.state.occasions} ></History>}></Route>
-          <Route path="/" render={(props) => (
-            <Graph currentTime={this.state.currentTime} pos={this.state.pos} end={this.state.end} start={this.state.start} 
-            setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/>
-          )}/>
-            {/*(this.state.page === "Graph") ? <Graph currentTime={this.state.currentTime} pos={this.state.pos} end={this.state.end} start={this.state.start} 
-          setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/> : null */}
-            {/*(this.state.page === "History") ? <History occasions={this.state.occasions} ></History> : null*/}
-            {/*{(this.state.page === "Settings") ? <FormSettings></FormSettings> : null }*/}
-            )}>
+            <Route exact path="/Settings" component={FormSettings} />
+            <Route exact path="/History" render={(props) => <History {...props} occasions={this.state.occasions} ></History>}></Route>
+            <Route path="/" render={(props) => (
+              <Graph currentTime={this.state.currentTime} pos={this.state.pos} end={this.state.end} start={this.state.start} 
+              setPos={this.setPos} perMille={this.state.perMille} handleAdd={this.handleAdd} drinks={this.state.currentDrinks}/>)}/>
           </Switch>
           {(this.state.adding) ? <AddDrink currentTime={this.state.currentTime} handleAdd={this.addDrink} handleEdit={this.editDrink} handleRemove={this.removeDrink} drink={this.state.drink} index={this.state.index}></AddDrink>: null}
           </div>

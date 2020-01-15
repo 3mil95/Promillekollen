@@ -63,9 +63,10 @@ class History extends Component {
                 <h1>History</h1>
                 <div className="history">
                 {this.props.occasions.map((occasion, i) => (
-                    <HistoryButton key={i} index={i} occasion={occasion} pickOccaion={this.pickOccaion}/>
+                    <HistoryButton key={i} index={i} occasion={occasion} pickOccaion={this.pickOccaion} max={createGraph(occasion.drinks).max}/>
                 ))}
                 <div className="history-button">
+                    <p>Rensa historik</p>
                     <button className="close-button" onClick={this.clear}>Clear</button>
                 </div>
                 </div>

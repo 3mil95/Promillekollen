@@ -12,7 +12,7 @@ class Drinks extends Component {
     }
 
     render() { 
-        console.log("pd", this.props.drinks)
+        //console.log("pd", this.props.drinks)
         if (!this.props.drinks) {
             return null
         }

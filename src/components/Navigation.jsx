@@ -7,7 +7,7 @@ class Navigation extends Component {
     state = {  }
 
     handlePage = (page) => {
-        this.props.handlePage(page)
+        //this.props.handlePage(page)
         this.props.history.push(`/${page}`)
     }
 
@@ -15,7 +15,7 @@ class Navigation extends Component {
         const page = this.props.location.pathname
         return (  
             <div className="nav">
-                <button onClick={() => this.handlePage("Graph")} className={(page === "/Graph") ? "open" : "close"}>
+                <button onClick={() => this.handlePage("")} className={(page === "/") ? "open" : "close"}>
                     <Promille/>  
                 Promille</button>
                 <button onClick={() => this.handlePage("History")} className={(page === "/History") ? "open" : "close"}>

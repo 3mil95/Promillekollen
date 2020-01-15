@@ -16,7 +16,6 @@ class Graph extends Component {
     }
 
     drawGraph = () => {
-        console.log('draw', this.props.perMille)
         const pos = this.props.pos - 200
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
@@ -147,6 +146,15 @@ class Graph extends Component {
       this.props.setPos(newPos)
     }
 
+    getPerMille = (perMille, currentTime) => {
+      const date = new Date();
+      const sec = date.getSeconds();
+      const from = perMille[currentTime-1];
+      const to = perMille[currentTime];
+      const add = (to - from)*(sec/60); 
+      return from+add
+    }
+
     render() { 
         this.createAxes()
         const {perMille, currentTime} = this.props
@@ -160,8 +168,7 @@ class Graph extends Component {
               </div>
                 {(this.props.currentTime !== -1) ? <div className= {(this.props.drinks.length !== 0) ? "graph-nav" : "graph-add"}>
                   <button className="add-button" onClick={() => this.props.handleAdd(null,null)}>+</button>
-                  {(this.props.drinks.length !== 0) ? <h3>{(perMille.length > currentTime) ? Math.round(perMille[currentTime] * 1000) / 1000 : 0}</h3> : null}
-                </div> : null}
+                  {(this.props.drinks.length !== 0) ? <h3>{(perMille.length > currentTime) ? Math.round(this.getPerMille(perMille, currentTime) * 1000) / 1000 : 0}</h3> : null}</div> : null}
             </div>
         );
     }

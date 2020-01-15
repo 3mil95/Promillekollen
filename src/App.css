@@ -120,13 +120,15 @@
   overflow: auto;
   color: #fff;
   height: calc(100vh - 150px);
+  padding: 0px 10px;
 }
 
 .history-button {
   color: #999;
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  white-space: unset;
   padding: 10px 0;
   background: transparent;
   border-bottom: #333 solid 1px;
@@ -233,6 +235,11 @@ h1 {
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; 
+}
+
+.my-slider p {
+  margin: 0;
+  font-size: 10px;
 }
 
 .slidecontainer {

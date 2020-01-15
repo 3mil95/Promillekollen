@@ -44,7 +44,7 @@ class Slider extends Component {
         const curentStep = (this.props.value - this.state.min) / this.state.step
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
-        this.ctx.strokeStyle  = "#ffffff";
+        this.ctx.strokeStyle  = "#888888";
         for (let i = 0; i <= numValues; i++) {
             this.ctx.moveTo((this.canvas.width/2 + (curentStep - i)*this.stepSize)-this.state.offset, 10);
             this.ctx.lineTo((this.canvas.width/2 + (curentStep - i)*this.stepSize)-this.state.offset, 17);
@@ -59,7 +59,7 @@ class Slider extends Component {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.beginPath();
         this.ctx.lineWidth = 3;
-        this.ctx.strokeStyle  = "#ffffff";
+        this.ctx.strokeStyle  = "#888888";
         this.ctx.moveTo(0, 10);
         this.ctx.lineTo(this.canvas.width, 10);
         this.ctx.stroke();
@@ -140,11 +140,11 @@ class Slider extends Component {
         const day = Math.floor(time/(24*60))
         console.log("day",currentDay, day)
         if (currentDay === day)
-            return " Today"
+            return <p>Today</p>
         if (currentDay < day) 
-            return " Tomorrow"
+            return <p>Tomorrow</p>
         if (currentDay > day) 
-            return  "Yesterday"
+            return  <p>Yesterday</p>
     }
 
     render() { 
@@ -156,7 +156,7 @@ class Slider extends Component {
                 <label>
                     {(this.state.unit !== "clock") ?
                         `${(this.props.map) ? this.props.map[this.props.value] : this.props.value}${this.state.unit}` :
-                        `${Math.floor((this.props.value/60)%24)}:${(this.props.value%60 < 10) ? `0${this.props.value%60}` :  this.props.value%60}${this.getDay(this.props.value)}`}</label><br/>
+                        `${Math.floor((this.props.value/60)%24)}:${(this.props.value%60 < 10) ? `0${this.props.value%60}` :  this.props.value%60}`}{this.getDay(this.props.value)}</label>
                 <canvas width="400px" height="40px" ref="canvas"></canvas>
             </div>
         );

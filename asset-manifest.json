@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Promillekollen/static/css/main.f1e19103.chunk.css",
-    "main.js": "/Promillekollen/static/js/main.b7fa7cfc.chunk.js",
-    "main.js.map": "/Promillekollen/static/js/main.b7fa7cfc.chunk.js.map",
+    "main.css": "/Promillekollen/static/css/main.8572b592.chunk.css",
+    "main.js": "/Promillekollen/static/js/main.ac68c514.chunk.js",
+    "main.js.map": "/Promillekollen/static/js/main.ac68c514.chunk.js.map",
     "runtime-main.js": "/Promillekollen/static/js/runtime-main.8abb7469.js",
     "runtime-main.js.map": "/Promillekollen/static/js/runtime-main.8abb7469.js.map",
     "static/js/2.35fc5036.chunk.js": "/Promillekollen/static/js/2.35fc5036.chunk.js",
     "static/js/2.35fc5036.chunk.js.map": "/Promillekollen/static/js/2.35fc5036.chunk.js.map",
     "index.html": "/Promillekollen/index.html",
-    "precache-manifest.4a971d21302366dedc0093cec151ee97.js": "/Promillekollen/precache-manifest.4a971d21302366dedc0093cec151ee97.js",
+    "precache-manifest.5dc588c6d5d8020ca8b2871fee3df298.js": "/Promillekollen/precache-manifest.5dc588c6d5d8020ca8b2871fee3df298.js",
     "service-worker.js": "/Promillekollen/service-worker.js",
-    "static/css/main.f1e19103.chunk.css.map": "/Promillekollen/static/css/main.f1e19103.chunk.css.map",
+    "static/css/main.8572b592.chunk.css.map": "/Promillekollen/static/css/main.8572b592.chunk.css.map",
     "static/js/2.35fc5036.chunk.js.LICENSE": "/Promillekollen/static/js/2.35fc5036.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.8abb7469.js",
     "static/js/2.35fc5036.chunk.js",
-    "static/css/main.f1e19103.chunk.css",
-    "static/js/main.b7fa7cfc.chunk.js"
+    "static/css/main.8572b592.chunk.css",
+    "static/js/main.ac68c514.chunk.js"
   ]
 }
